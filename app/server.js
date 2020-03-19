@@ -1,15 +1,14 @@
-import Koa from 'koa'
-import http from 'http'
-import convert from 'koa-convert'
-import cors from 'koa-cors' //跨域
-import bodyParser from 'koa-bodyparser' //请求体JSON解析
-import onerror from 'koa-onerror' //错误处理
+const Koa = require('koa')
+const http = require('http')
+const convert = require('koa-convert')
+const cors = require('koa-cors')
+const bodyParser = require('koa-bodyparser') //请求体JSON解析
+const onerror = require('koa-onerror') //错误处理
 
-import routes from './routes'
-import config from '../config/config'
-import {log} from './utils/LogUtils'
-import catchError from './middlewares/HttpError'
-import {koaConfig,authorizationErr} from './middlewares/JWT'
+const routes = require('./routes')
+const config = require('../config/config')
+const log = require('./utils/LogUtils')
+const catchError = require('./middlewares/HttpError')
 
 const app = new Koa()
 
@@ -24,8 +23,8 @@ app.use(async (ctx, next) => {
 })
 app.use(convert(cors()))
 app.use(catchError)
-app.use(authorizationErr)
-app.use(koaConfig)
+// app.use(authorizationErr)
+// app.use(koaConfig)
 
 onerror(app)
 app.use(bodyParser())
@@ -47,4 +46,4 @@ http.createServer(app.callback())
       log.info('正在监听端口' + config.port)
     })
 
-export default app
+module.exports = app

@@ -1,4 +1,4 @@
-import {log} from '../utils/LogUtils'
+const log = require('../utils/LogUtils')
 
 async function catchError(ctx, next) {
   // log.info('middlewares : catchError start')
@@ -14,10 +14,10 @@ async function catchError(ctx, next) {
     if (ctx.status === 500) {
       log.error('server error', err, ctx)
     } else {
-      log.error('request wrong',ctx)
+      log.error('request wrong', ctx)
     }
   }
   // log.info('middlewares : catchError finsh')
 }
 
-export default catchError
+module.exports = catchError

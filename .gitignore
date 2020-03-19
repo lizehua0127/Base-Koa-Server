@@ -12,3 +12,4 @@ logs
 *.ntvs*
 *.njsproj
 *.sln
+build

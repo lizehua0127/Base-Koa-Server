@@ -1,9 +1,9 @@
-import _ from 'lodash'
-import development from './development'
-import production from './production'
-import test from './test'
+const merge = require('lodash')
+const development = require('./development')
+const production = require('./production')
+const test = require('./test')
 
-export const env = process.env.NODE_ENV || 'development'
+const env = process.env.NODE_ENV || 'development'
 
 const configs = {
   development: development,
@@ -15,6 +15,6 @@ const defaultConfig = {
   env: env
 }
 
-const config = _.merge(defaultConfig, configs[env])
+const config = merge.merge(defaultConfig, configs[env])
 
-export default config
+module.exports = config

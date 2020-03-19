@@ -1,6 +1,6 @@
-import Router from 'koa-router'
-import test from './test'
-import login from './login'
+const Router = require('koa-router')
+const test = require('./test')
+const login = require('./login')
 
 const router = new Router()
 router.prefix('/api')
@@ -8,4 +8,4 @@ router.prefix('/api')
 router.use(test.routes(), test.allowedMethods())
 router.use(login.routes(), login.allowedMethods())
 
-export default router
+module.exports = router

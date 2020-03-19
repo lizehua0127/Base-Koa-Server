@@ -1,4 +1,4 @@
-import config from '../../config/config'
+const config = require('../../config/config')
 
 const mysql = require('mysql')
 let log = require('./LogUtils').log

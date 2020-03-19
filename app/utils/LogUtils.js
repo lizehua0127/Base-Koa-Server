@@ -10,7 +10,7 @@ let appenders = {
   },
   log_file: {
     type: 'file',
-    filename: './logs/all_logs.log',
+    filename: process.cwd() + '/logs/all_logs.log',
     maxLogSize: 10485760,
     backups: 10,
     layout: {
@@ -20,7 +20,7 @@ let appenders = {
   },
   err_file: {
     type: 'file',
-    filename: './logs/error_log.log',
+    filename: process.cwd() + '/logs/error_log.log',
     maxLogSize: 10485760,
     backups: 10,
     layout: {
@@ -49,6 +49,4 @@ let log = log4js.configure({
   categories: categories
 })
 
-module.exports = {
-  log: log.getLogger()
-}
+module.exports = log.getLogger()

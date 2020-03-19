@@ -1,6 +1,6 @@
-import koaJwt from 'koa-jwt'
-import jwt from 'jsonwebtoken'
-import {log} from '../utils/LogUtils'
+const koaJwt = require( 'koa-jwt')
+const jwt = require( 'jsonwebtoken')
+const log = require( '../utils/LogUtils')
 
 const secret = 'sssssssssss'
 const expiresTime = 60 * 60 * 24

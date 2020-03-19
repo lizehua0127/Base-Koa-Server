@@ -1,9 +1,26 @@
 {
-  "name": "studybird-haina-server",
+  "name": "MonitorMsg",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": "pkg-entry.js",
+  "pkg": {
+    "scripts": [
+      "./public/js/*.js",
+      "./app/**/*.js",
+      "./config/**/*.js",
+      "./index.js"
+    ],
+    "assets": [
+      "./app/public/css/*",
+      "./app/public/fonts/*",
+      "./node_modules/**/*",
+      "./app/front/**",
+      "./package.json"
+    ]
+  },
   "scripts": {
+    "pkg": "pkg -d --out-path=build .",
     "start": "cross-env NODE_ENV=production node ./index.js",
     "dev": "cross-env ./node_modules/.bin/nodemon ./index.js",
     "test": "cross-env NODE_ENV=test ./node_modules/.bin/nodemon ./index.js"

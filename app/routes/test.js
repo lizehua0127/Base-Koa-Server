@@ -1,5 +1,5 @@
-import Router from 'koa-router'
-import {log} from '../utils/LogUtils'
+const Router = require('koa-router')
+const log = require('../utils/LogUtils')
 
 const router = new Router()
 
@@ -25,4 +25,9 @@ router.get('/testsql', async (ctx, next) => {
   log.info(data)
 })
 
-export default router
+router.post('/msg', (ctx, next) => {
+  log.info(ctx.request.body)
+  ctx.body = {success: true}
+})
+
+module.exports =  router
