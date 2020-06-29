@@ -1,5 +1,6 @@
 const Router = require('koa-router')
 const log = require('../utils/LogUtils')
+const requestManager = require('../service/RequestManager')
 
 const router = new Router()
 
@@ -26,8 +27,13 @@ router.get('/testsql', async (ctx, next) => {
 })
 
 router.post('/msg', (ctx, next) => {
-  log.info(ctx.request.body)
+  log.info(JSON.stringify(ctx.request.body))
+
+  if (ctx.request.body.msgType === 'notifyQrCodeContent') {
+    requestManager.pushTrayOrders(ctx.request.body.robotId, ctx.request.body.deviceId, ctx.request.body.data.content)
+  }
+
   ctx.body = {success: true}
 })
 
-module.exports =  router
+module.exports = router
